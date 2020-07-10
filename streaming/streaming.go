@@ -75,9 +75,9 @@ func flatten(m map[string]order, reverse bool) []luno.OrderBookEntry {
 			ret = append(ret, o)
 			continue
 		}
-		firstIdx := len(ret) -1
-		if o.Price.Cmp(ret[firstIdx].Price) == 0 {
-			ret[firstIdx].Volume = ret[firstIdx].Volume.Add(o.Volume)
+		lastIdx := len(ret)-1
+		if o.Price.Cmp(ret[lastIdx].Price) == 0 {
+			ret[lastIdx].Volume = ret[lastIdx].Volume.Add(o.Volume)
 			continue
 		}
 		ret = append(ret, o)
